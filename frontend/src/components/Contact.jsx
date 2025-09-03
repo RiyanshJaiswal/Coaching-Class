@@ -230,6 +230,7 @@ const Contact = () => {
                     name="phone"
                     type="tel"
                     required
+                    disabled={isSubmitting}
                     value={formData.phone}
                     onChange={handleChange}
                     className="mt-1"
