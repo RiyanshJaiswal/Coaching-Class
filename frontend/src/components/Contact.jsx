@@ -246,6 +246,7 @@ const Contact = () => {
                     id="message"
                     name="message"
                     rows={4}
+                    disabled={isSubmitting}
                     value={formData.message}
                     onChange={handleChange}
                     className="mt-1"
