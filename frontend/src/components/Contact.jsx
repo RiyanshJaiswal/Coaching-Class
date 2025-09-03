@@ -196,6 +196,7 @@ const Contact = () => {
                     name="name"
                     type="text"
                     required
+                    disabled={isSubmitting}
                     value={formData.name}
                     onChange={handleChange}
                     className="mt-1"
