@@ -252,11 +252,37 @@ const Contact = () => {
 
                 <Button 
                   type="submit" 
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 disabled:bg-gray-400 disabled:cursor-not-allowed"
                 >
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Send Message
+                    </>
+                  )}
                 </Button>
+                
+                {/* Status Messages */}
+                {submitStatus && (
+                  <div className={`mt-4 p-4 rounded-lg flex items-center space-x-2 ${
+                    submitStatus.type === 'success' 
+                      ? 'bg-green-50 text-green-800 border border-green-200' 
+                      : 'bg-red-50 text-red-800 border border-red-200'
+                  }`}>
+                    {submitStatus.type === 'success' ? (
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 text-red-600" />
+                    )}
+                    <p className="text-sm font-medium">{submitStatus.message}</p>
+                  </div>
+                )}
               </form>
             </CardContent>
           </Card>
