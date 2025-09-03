@@ -213,6 +213,7 @@ const Contact = () => {
                     name="email"
                     type="email"
                     required
+                    disabled={isSubmitting}
                     value={formData.email}
                     onChange={handleChange}
                     className="mt-1"
